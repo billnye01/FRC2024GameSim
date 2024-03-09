@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Vishual">
+      <UniqueIdentifier>{d8f2717a-2a1f-43a8-9a53-14eaea9fc0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vishual\SorceFiles_V">
+      <UniqueIdentifier>{1bfa1312-ba74-47dd-a640-59e9264995c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vishual\HeaderFiles_V">
+      <UniqueIdentifier>{8c8ed24b-602d-464b-9f6f-7d3443c9880b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NearallNetwork">
+      <UniqueIdentifier>{6d4eac9c-36f0-41c3-a4be-f58547d21476}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Entdy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckSDL.cpp">
+      <Filter>Vishual\SorceFiles_V</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderWindow.cpp">
+      <Filter>Vishual\SorceFiles_V</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Robot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotContruller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuralNetWorkRow.cpp">
+      <Filter>NearallNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="BrainContruller.cpp">
+      <Filter>NearallNetwork</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Entdy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderWindow.h">
+      <Filter>Vishual\HeaderFiles_V</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckSDL.h">
+      <Filter>Vishual\HeaderFiles_V</Filter>
+    </ClInclude>
+    <ClInclude Include="Robot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RobotContruller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuralNetWorkRow.h">
+      <Filter>NearallNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="BrainContruller.h">
+      <Filter>NearallNetwork</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
