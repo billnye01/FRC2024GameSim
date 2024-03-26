@@ -142,23 +142,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BrainContruller.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CheckSDL.cpp" />
     <ClCompile Include="Entdy.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NeuralNetWorkRow.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="Robot.cpp" />
     <ClCompile Include="RobotContruller.cpp" />
+    <ClCompile Include="Row.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BrainContruller.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="CheckSDL.h" />
     <ClInclude Include="Entdy.h" />
-    <ClInclude Include="NeuralNetWorkRow.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="Robot.h" />
     <ClInclude Include="RobotContruller.h" />
+    <ClInclude Include="Row.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,16 +11,16 @@ void Robot::update()
 	robot->y += YChange;
 }
 
-void Robot::change(std::vector<int> inputs)
+void Robot::change(std::vector<float> inputs)
 {
 	XChange = inputs[0];
 	YChange = inputs[1];
 	Omega = inputs[2];
 }
 
-std::vector<int> Robot::getValues()
+std::vector<float> Robot::getValues()
 {
-	std::vector<int> out(6);
+	std::vector<float> out(6);
 
 	out[0] = robot->x;
 	out[1] = robot->y;

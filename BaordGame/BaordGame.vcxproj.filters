@@ -39,11 +39,11 @@
     <ClCompile Include="RobotContruller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NeuralNetWorkRow.cpp">
-      <Filter>NearallNetwork</Filter>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BrainContruller.cpp">
-      <Filter>NearallNetwork</Filter>
+    <ClCompile Include="Row.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,11 +62,11 @@
     <ClInclude Include="RobotContruller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NeuralNetWorkRow.h">
-      <Filter>NearallNetwork</Filter>
+    <ClInclude Include="Cell.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BrainContruller.h">
-      <Filter>NearallNetwork</Filter>
+    <ClInclude Include="Row.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

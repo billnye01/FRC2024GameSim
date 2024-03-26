@@ -8,8 +8,8 @@
 #include "Entdy.h"
 #include "RobotContruller.h"
 #include <stdlib.h>     /* srand, rand */
-#include <time.h>       
-//#include "RobotEntdy.h"
+#include <time.h>     
+#include "Row.h"
 
 int main(int argc, char* argv[]){
 
@@ -54,11 +54,16 @@ int main(int argc, char* argv[]){
 	robotContuller.setRobot(red2, 4);
 	robotContuller.setRobot(red3, 5);
 
+	Row rowBlue1(6, 3);
+	rowBlue1.RandomizeCells(0, 1, 0, 1);
+
 
 	bool GameRuning = true;
 
 	while (GameRuning) {
 		GameRuning = checkSDL.CheckIfGameRunning();
+		
+		robotContuller.ModifiRobot(rowBlue1.out(robotContuller.getRobotValues(0)), 0);
 
 		// do stuff
 		robotContuller.UpdateAll();

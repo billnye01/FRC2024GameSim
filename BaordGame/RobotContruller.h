@@ -9,12 +9,12 @@ public:
 	RobotContruller();
 
 	void setRobot(Robot& robotIn, int i);
-	void ModifiRobot(std::vector<int> in, int i);
+	void ModifiRobot(std::vector<float> in, int i);
 
 	void UpdateAll();
 
-	std::vector<int> getRobotValues(int i);
-	std::vector<int> getAllRobotValues();
+	std::vector<float> getRobotValues(int i);
+	std::vector<float> getAllRobotValues();
 
 	Robot& getRobot(int i);
 

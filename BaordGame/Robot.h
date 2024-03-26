@@ -15,14 +15,14 @@ public:
 
 	void update();
 
-	void change(std::vector<int> inputs);
-	std::vector<int> getValues();
+	void change(std::vector<float> inputs);
+	std::vector<float> getValues();
 
 private:
 	Entdy* robot;
 
-	int XChange = 0;
-	int YChange = 0;
-	int Omega = 0;
+	double XChange = 0;
+	double YChange = 0;
+	double Omega = 0;
 };
 
