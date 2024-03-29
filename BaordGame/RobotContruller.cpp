@@ -2,14 +2,12 @@
 
 RobotContruller::RobotContruller()
 {
-    robots = std::vector<Robot*>(6);
+    robots = vector<Robot*>(6);
 }
 
 void RobotContruller::setRobot(Robot& robotIn, int i)
 {
-    if (i >= 0 && i < robots.size()) {
-        robots[i] = &robotIn;
-    }
+    robots[i] = &robotIn;
 }
 
 void RobotContruller::ModifiRobot(std::vector<float> in, int i)
@@ -26,18 +24,18 @@ void RobotContruller::UpdateAll()
 
 std::vector<float> RobotContruller::getRobotValues(int i)
 {
+
     return robots[i]->getValues();
 }
 
 std::vector<float> RobotContruller::getAllRobotValues()
 {
-    std::vector<float> out;
+    vector<float> out;
 
-    int indexOn = 0;
     for (int i = 0; i < robots.size(); i++) {
-        for (int j = 0; j < robots[i]->getValues().size(); j++) {
-            out[indexOn] = robots[i]->getValues()[j];
-            indexOn++;
+        vector<float> robotValues = getRobotValues(i);
+        for (int j = 0; j < robotValues.size(); j++) {
+            out.push_back(robotValues[j]);
         }
     }
 

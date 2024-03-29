@@ -36,13 +36,16 @@
     <ClCompile Include="Robot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RobotContruller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Row.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Brain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotContruller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Row.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Brain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

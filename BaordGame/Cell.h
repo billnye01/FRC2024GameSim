@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
+#include <random>
 
 using namespace std;
 
@@ -38,6 +39,7 @@ public:
 private:
 
 	float getRandomNumberInRange(float min, float max);
+
 
 	cellValues cellvalues;
 

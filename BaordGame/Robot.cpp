@@ -7,6 +7,7 @@ Robot::Robot(Entdy* entdy) :robot(entdy)
 void Robot::update()
 {
 	//cout << "Update, X change -" << XChange << endl;
+	Score += XChange + YChange;
 	robot->x += XChange;
 	robot->y += YChange;
 }
@@ -16,6 +17,30 @@ void Robot::change(std::vector<float> inputs)
 	XChange = inputs[0];
 	YChange = inputs[1];
 	Omega = inputs[2];
+
+	if (robot->x > 1100) {
+		if (XChange > 0) {
+			XChange = 0;
+		}
+	}
+	else if(robot->x < 50)
+	{
+		if (XChange < 0) {
+			XChange = 0;
+		}
+	}
+
+	if (robot->y > 600) {
+		if (YChange > 0) {
+			YChange = 0;
+		}
+	}
+	else if (robot->y < 0)
+	{
+		if (YChange < 0) {
+			YChange = 0;
+		}
+	}
 }
 
 std::vector<float> Robot::getValues()
@@ -30,4 +55,9 @@ std::vector<float> Robot::getValues()
 	out[4] = Omega;
 
 	return out;
+}
+
+double Robot::getScore()
+{
+	return Score;
 }

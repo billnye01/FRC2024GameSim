@@ -2,7 +2,7 @@
 
 #include <vector>
 
-Cell::Cell(int amountOfInputs) : cellvalues() {
+Cell::Cell(int amountOfInputs) {
 	cellvalues.Weights = vector<float>(amountOfInputs);
 }
 
@@ -86,6 +86,23 @@ cellValues* Cell::getCellValues_ptr()
 
 float Cell::getRandomNumberInRange(float min, float max)
 {
+
+	// Create a random device to seed the random number engine
+	std::random_device rd;
+	// Create a Mersenne Twister pseudo-random number generator
+	std::mt19937 gen(rd());
+	// Define the distribution for the random number (here, between 0 and 1)
+	std::uniform_real_distribution<double> dis(min, max);
+
+	// Generate a fully random number
+	double randomNumber = dis(gen);
+
+	return randomNumber;
+
 	//cout << "randomNumber: " << abs(rand()) * (max - min) + max << endl;
-	return abs(rand()) * (max - min) + max;
+	//return abs(randomNumber) * (max - min) + max;
+
+	/*
+	uniform_int_distribution<int> dist(min, max);
+	return dist(rd);*/
 }

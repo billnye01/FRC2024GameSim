@@ -1,12 +1,14 @@
 #include "Row.h"
 
-Row::Row(int amountOfInputs, int amountOfOutputs):
-	cells(vector<Cell>(amountOfOutputs)), amountOfInputs(amountOfInputs)
+Row::Row(int amountOfInputs, int amountOfOutputs): amountOfInputs(amountOfInputs)
 {
+	vector<Cell> m_cells;
 	for (int i = 0; i < amountOfOutputs; i++)
 	{
-		cells[i] = Cell(amountOfInputs);
+		m_cells.push_back(Cell(amountOfInputs));
 	}
+
+	cells = m_cells;
 }
 
 vector<Cell> Row::getCells()

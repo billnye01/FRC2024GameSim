@@ -8,10 +8,13 @@
 #include "Entdy.h"
 #include "RobotContruller.h"
 #include <stdlib.h>     /* srand, rand */
-#include <time.h>     
-#include "Row.h"
+#include <time.h>
+#include <chrono>
+#include <ctime>
+#include "Brain.h"
 
 int main(int argc, char* argv[]){
+
 
 						//blue 0  //blue 1  //blue 2
 	int RobotPosX[3] = {170,		  275,		500};
@@ -54,8 +57,23 @@ int main(int argc, char* argv[]){
 	robotContuller.setRobot(red2, 4);
 	robotContuller.setRobot(red3, 5);
 
-	Row rowBlue1(6, 3);
-	rowBlue1.RandomizeCells(0, 1, 0, 1);
+	Brain blue1_B( { 10, 10 }, 3, robotContuller.getAllRobotValues().size());
+	blue1_B.BrainRandomize(-1, 1, -1, 1);
+
+	Brain blue2_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
+	blue2_B.BrainRandomize(-1, 1, -1, 1);
+
+	Brain blue3_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
+	blue3_B.BrainRandomize(-1, 1, -1, 1);
+
+	Brain red1_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
+	red1_B.BrainRandomize(-1, 1, -1, 1);
+
+	Brain red2_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
+	red2_B.BrainRandomize(-1, 1, -1, 1);
+
+	Brain red3_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
+	red3_B.BrainRandomize(-1, 1, -1, 1);
 
 
 	bool GameRuning = true;
@@ -63,22 +81,17 @@ int main(int argc, char* argv[]){
 	while (GameRuning) {
 		GameRuning = checkSDL.CheckIfGameRunning();
 		
-		robotContuller.ModifiRobot(rowBlue1.out(robotContuller.getRobotValues(0)), 0);
+		robotContuller.ModifiRobot(blue1_B.out(robotContuller.getAllRobotValues()), 0);
+		robotContuller.ModifiRobot(blue2_B.out(robotContuller.getAllRobotValues()), 1);
+		robotContuller.ModifiRobot(blue3_B.out(robotContuller.getAllRobotValues()), 2);
+
+		robotContuller.ModifiRobot(red1_B.out(robotContuller.getAllRobotValues()), 3);
+		robotContuller.ModifiRobot(red2_B.out(robotContuller.getAllRobotValues()), 4);
+		robotContuller.ModifiRobot(red3_B.out(robotContuller.getAllRobotValues()), 5);
+
 
 		// do stuff
 		robotContuller.UpdateAll();
-
-		for (int i = 0; i < 6; i++)
-		{
-			if (i > 2) {
-				BlueScore += robotContuller.getRobotValues(i)[1];
-			}
-			else
-			{
-				RedScore += robotContuller.getRobotValues(i)[1];
-			}
-			
-		}
 
 		window.Clear();
 		window.renderAll();
@@ -87,6 +100,23 @@ int main(int argc, char* argv[]){
 
 	window.CleanUp();
 	SDL_Quit();
+
+	RedScore += robotContuller.getRobot(3).getScore();
+	RedScore += robotContuller.getRobot(4).getScore();
+	RedScore += robotContuller.getRobot(5).getScore();
+
+	BlueScore += robotContuller.getRobot(0).getScore();
+	BlueScore += robotContuller.getRobot(1).getScore();
+	BlueScore += robotContuller.getRobot(2).getScore();
+
+
+	if (RedScore > BlueScore) {
+		cout << "RED WON!!";
+	}
+	else
+	{
+		cout << "BLUE WON!!!";
+	}
 	
 	return 0;
 }

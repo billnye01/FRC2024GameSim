@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Brain.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CheckSDL.cpp" />
     <ClCompile Include="Entdy.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Row.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Brain.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CheckSDL.h" />
     <ClInclude Include="Entdy.h" />
