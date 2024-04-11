@@ -18,8 +18,9 @@ class Cell{
 
 public:
 	Cell(int amountOfInputs);
+	Cell(cellValues cellvalues);
 
-	void RandomlySetWeights(float Min, float Max, int amountOfInputs);
+	void RandomlySetWeights(float Min, float Max);
 	void RandomlySetWeightsBais(float Min, float Max);
 
 	void setCellValues(cellValues m_cellValues);

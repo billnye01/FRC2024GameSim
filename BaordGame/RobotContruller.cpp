@@ -10,6 +10,11 @@ void RobotContruller::setRobot(Robot& robotIn, int i)
     robots[i] = &robotIn;
 }
 
+void RobotContruller::setRobot(Robot* robotIn, int i)
+{
+    robots[i] = robotIn;
+}
+
 void RobotContruller::ModifiRobot(std::vector<float> in, int i)
 {
     robots[i]->change(in);
@@ -42,7 +47,25 @@ std::vector<float> RobotContruller::getAllRobotValues()
     return out;
 }
 
+vector<int> RobotContruller::getScores()
+{
+    vector<int> out(robots.size());
+
+    for (int i = 0; i < robots.size(); i++) {
+        out[i] = robots[i]->getScore();
+    }
+
+    return out;
+}
+
 Robot& RobotContruller::getRobot(int i)
 {
     return *robots[i];
+}
+
+void RobotContruller::Reset()
+{
+    for (int i = 0; i < robots.size(); i++) {
+        robots[i]->resetRobot();
+    }
 }

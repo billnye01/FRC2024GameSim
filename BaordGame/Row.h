@@ -7,6 +7,7 @@ class Row
 
 public:
 	Row(int amountOfInputs, int amountOfOutputs);
+	Row(vector<Cell> cells);
 
 	vector<Cell> getCells();
 	vector<cellValues*> getCellValues();

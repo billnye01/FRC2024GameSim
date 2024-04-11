@@ -114,6 +114,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\clywh\OneDrive\Desktop\Code\C\BaordGame\SDL\SDL2-2.28.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,6 +132,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\clywh\OneDrive\Desktop\Code\C\BaordGame\SDL\SDL2-2.28.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +153,10 @@
     <ClCompile Include="Robot.cpp" />
     <ClCompile Include="RobotContruller.cpp" />
     <ClCompile Include="Row.cpp" />
+    <ClCompile Include="Saving.cpp" />
+    <ClCompile Include="Sim.cpp" />
+    <ClCompile Include="SimProbertys.cpp" />
+    <ClCompile Include="SimProgramProbertys.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Brain.h" />
@@ -161,6 +167,13 @@
     <ClInclude Include="Robot.h" />
     <ClInclude Include="RobotContruller.h" />
     <ClInclude Include="Row.h" />
+    <ClInclude Include="Saving.h" />
+    <ClInclude Include="Sim.h" />
+    <ClInclude Include="SimProbertys.h" />
+    <ClInclude Include="SimProgramProbertys.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="SaveFiles\SaveTest.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

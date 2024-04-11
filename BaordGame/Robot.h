@@ -11,7 +11,7 @@ class Robot
 {
 
 public:
-	Robot(Entdy* entdy);
+	Robot(Entdy* entdy, bool BlueSide);
 
 	void update();
 
@@ -20,13 +20,19 @@ public:
 
 	double getScore();
 
+	void resetRobot();
+
 private:
 	Entdy* robot;
+	int xStartingPos;
+	int yStartingPos;
 
-	double XChange = 0;
-	double YChange = 0;
-	double Omega = 0;
+	float XChange = 0;
+	float YChange = 0;
+	float Omega = 0;
 
-	double Score;
+	bool BlueSide;
+
+	float Score;
 };
 

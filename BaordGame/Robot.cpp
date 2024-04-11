@@ -1,22 +1,34 @@
 #include "Robot.h"
 
-Robot::Robot(Entdy* entdy) :robot(entdy)
+Robot::Robot(Entdy* entdy, bool BlueSide) :robot(entdy), BlueSide(BlueSide)
 {
+	xStartingPos = robot->x;
+	yStartingPos = robot->y;
 }
 
 void Robot::update()
 {
 	//cout << "Update, X change -" << XChange << endl;
-	Score += XChange + YChange;
+
+
+
+	Score += abs(XChange) + abs(YChange);
 	robot->x += XChange;
 	robot->y += YChange;
 }
 
 void Robot::change(std::vector<float> inputs)
 {
-	XChange = inputs[0];
-	YChange = inputs[1];
-	Omega = inputs[2];
+
+	int SideModfi = 1;
+
+	if (!BlueSide) {
+		SideModfi = -1;
+	}
+
+	XChange = inputs[0] * SideModfi;
+	YChange = inputs[1] * SideModfi;
+	Omega = inputs[2] * SideModfi;
 
 	if (robot->x > 1100) {
 		if (XChange > 0) {
@@ -41,6 +53,7 @@ void Robot::change(std::vector<float> inputs)
 			YChange = 0;
 		}
 	}
+
 }
 
 std::vector<float> Robot::getValues()
@@ -60,4 +73,11 @@ std::vector<float> Robot::getValues()
 double Robot::getScore()
 {
 	return Score;
+}
+
+void Robot::resetRobot()
+{
+	robot->x = xStartingPos;
+	robot->y = yStartingPos;
+	Score = 0;
 }

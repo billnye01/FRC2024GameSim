@@ -6,9 +6,14 @@ Cell::Cell(int amountOfInputs) {
 	cellvalues.Weights = vector<float>(amountOfInputs);
 }
 
-void Cell::RandomlySetWeights(float Min, float Max, int amountOfInputs)
+Cell::Cell(cellValues cellvalues)
 {
-	vector<float> weights(amountOfInputs);
+	this->cellvalues = cellvalues;
+}
+
+void Cell::RandomlySetWeights(float Min, float Max)
+{
+	vector<float> weights(cellvalues.Weights.size());
 
 	for (int i = 0; i < weights.size(); i++)
 	{
@@ -42,14 +47,28 @@ void Cell::setWeights(vector<float> m_Weights)
 
 void Cell::setWeightsRandomlyOnARefrancePoint(float MaxUp, float MinDown)
 {
+	cout << "start modfi weights\n";
+
 	for (int i = 0; i < cellvalues.Weights.size(); i++) {
+
 		cellvalues.Weights[i] += getRandomNumberInRange(MinDown, MaxUp);
+
+		if (cellvalues.Weights[i] > 1) {
+			cellvalues.Weights[i] = 1;
+		}
+		else if (cellvalues.Weights[i] < -1) {
+			cellvalues.Weights[i] = -1;
+
+		}
 	}
 }
 
 void Cell::setBaisRandomlyOnARefrancePoint(float MaxUp, float MinDown)
 {
+	cout << "start modfi bais\n";
+
 	cellvalues.Bais += getRandomNumberInRange(MinDown, MaxUp);
+
 }
 
 float Cell::getValue(vector<float> Inputs)
@@ -63,6 +82,7 @@ float Cell::getValue(vector<float> Inputs)
 
 	for (int i = 0; i <  cellvalues.Weights.size(); i++)
 	{
+
 		out += Inputs[i] * cellvalues.Weights[i];
 	}
 

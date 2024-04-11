@@ -11,10 +11,16 @@
 #include <time.h>
 #include <chrono>
 #include <ctime>
+#include <algorithm>
+#include "Saving.h"
 #include "Brain.h"
+#include "Sim.h"
+
+bool sortF(int i, int j) { return (i < j); }
 
 int main(int argc, char* argv[]){
-
+	
+	Saving save(std::string("C:/Users/clywh/OneDrive/Desktop/Code/C/FRC2024GameSim/BaordGame/SaveFiles/SaveTest.txt"));
 
 						//blue 0  //blue 1  //blue 2
 	int RobotPosX[3] = {170,		  275,		500};
@@ -39,84 +45,79 @@ int main(int argc, char* argv[]){
 	Entdy* backDrop = window.CreateEntdy(0, 0, 2.3, window.LoadTexture("FRC2024Fiald.png"));
 
 	// makes the robots
+	//RobotContruller robotContuller;
+
+	SimTemp simTemp;
 	RobotContruller robotContuller;
 
-	Robot blue1(window.CreateEntdy(RobotPosY[1], RobotPosX[0], 0.1, window.LoadTexture("BlueAllanceRobot.png")));
-	Robot blue2(window.CreateEntdy(RobotPosY[1], RobotPosX[1], 0.1, window.LoadTexture("BlueAllanceRobot.png")));
-	Robot blue3(window.CreateEntdy(RobotPosY[1], RobotPosX[2], 0.1, window.LoadTexture("BlueAllanceRobot.png")));
+	//blue
+	Robot RobotBlue1(window.CreateEntdy(RobotPosY[1], RobotPosX[0], 0.1, window.LoadTexture("BlueAllanceRobot.png")), true);
+	Robot RobotBlue2(window.CreateEntdy(RobotPosY[1], RobotPosX[1], 0.1, window.LoadTexture("BlueAllanceRobot.png")), true);
+	Robot RobotBlue3(window.CreateEntdy(RobotPosY[1], RobotPosX[2], 0.1, window.LoadTexture("BlueAllanceRobot.png")), true);
 
-	Robot red1(window.CreateEntdy(RobotPosY[0], RobotPosX[0], 0.1, window.LoadTexture("RedAllanceRobot.png")));
-	Robot red2(window.CreateEntdy(RobotPosY[0], RobotPosX[1], 0.1, window.LoadTexture("RedAllanceRobot.png")));
-	Robot red3(window.CreateEntdy(RobotPosY[0], RobotPosX[2], 0.1, window.LoadTexture("RedAllanceRobot.png")));
+	//red
+	Robot RobotRed1(window.CreateEntdy(RobotPosY[0], RobotPosX[0], 0.1, window.LoadTexture("RedAllanceRobot.png")), false);
+	Robot RobotRed2(window.CreateEntdy(RobotPosY[0], RobotPosX[1], 0.1, window.LoadTexture("RedAllanceRobot.png")), false);
+	Robot RobotRed3(window.CreateEntdy(RobotPosY[0], RobotPosX[2], 0.1, window.LoadTexture("RedAllanceRobot.png")), false);
 
-	// sets the robots in robotContuller
-	robotContuller.setRobot(blue1, 0);
-	robotContuller.setRobot(blue2, 1);
-	robotContuller.setRobot(blue3, 2);
-	robotContuller.setRobot(red1, 3);
-	robotContuller.setRobot(red2, 4);
-	robotContuller.setRobot(red3, 5);
+	robotContuller.setRobot(RobotBlue1, 0);
+	robotContuller.setRobot(RobotBlue2, 1);
+	robotContuller.setRobot(RobotBlue3, 2);
+	robotContuller.setRobot(RobotRed1, 3);
+	robotContuller.setRobot(RobotRed2, 4);
+	robotContuller.setRobot(RobotRed3, 5);
 
-	Brain blue1_B( { 10, 10 }, 3, robotContuller.getAllRobotValues().size());
-	blue1_B.BrainRandomize(-1, 1, -1, 1);
+	simTemp.robotCon = &robotContuller;
 
-	Brain blue2_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
-	blue2_B.BrainRandomize(-1, 1, -1, 1);
-
-	Brain blue3_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
-	blue3_B.BrainRandomize(-1, 1, -1, 1);
-
-	Brain red1_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
-	red1_B.BrainRandomize(-1, 1, -1, 1);
-
-	Brain red2_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
-	red2_B.BrainRandomize(-1, 1, -1, 1);
-
-	Brain red3_B({ 10, 10 }, 3, robotContuller.getAllRobotValues().size());
-	red3_B.BrainRandomize(-1, 1, -1, 1);
+	Sim sim(simTemp);
+	sim.Start(true, {10, 10});
 
 
 	bool GameRuning = true;
 
 	while (GameRuning) {
 		GameRuning = checkSDL.CheckIfGameRunning();
-		
-		robotContuller.ModifiRobot(blue1_B.out(robotContuller.getAllRobotValues()), 0);
-		robotContuller.ModifiRobot(blue2_B.out(robotContuller.getAllRobotValues()), 1);
-		robotContuller.ModifiRobot(blue3_B.out(robotContuller.getAllRobotValues()), 2);
 
-		robotContuller.ModifiRobot(red1_B.out(robotContuller.getAllRobotValues()), 3);
-		robotContuller.ModifiRobot(red2_B.out(robotContuller.getAllRobotValues()), 4);
-		robotContuller.ModifiRobot(red3_B.out(robotContuller.getAllRobotValues()), 5);
+		for (int i = 0; i < 3; i++) {
 
+			if (i != 0) {
+				sim.StartLoad("C:/Users/clywh/OneDrive/Desktop/Code/C/FRC2024GameSim/BaordGame/SaveFiles/SaveTest.txt");
+			}
 
-		// do stuff
-		robotContuller.UpdateAll();
+			int cycalls = 600;
+			bool runing = true;
+			while (cycalls > 0)
+			{
+				cout << cycalls << "\n\n\n";
 
-		window.Clear();
-		window.renderAll();
-		window.Display();
+				sim.Update();
+
+				window.Clear();
+				window.renderAll();
+				window.Display();
+
+				cycalls--;
+			}
+			
+			sim.End("C:/Users/clywh/OneDrive/Desktop/Code/C/FRC2024GameSim/BaordGame/SaveFiles/SaveTest.txt");
+			sim.Reset();
+		}
+
 	}
 
 	window.CleanUp();
 	SDL_Quit();
 
-	RedScore += robotContuller.getRobot(3).getScore();
-	RedScore += robotContuller.getRobot(4).getScore();
-	RedScore += robotContuller.getRobot(5).getScore();
+	//vector<int> bestRobots = robotContuller.getScores();
 
-	BlueScore += robotContuller.getRobot(0).getScore();
-	BlueScore += robotContuller.getRobot(1).getScore();
-	BlueScore += robotContuller.getRobot(2).getScore();
+	//sort(bestRobots.begin(), bestRobots.end(), sortF);
 
+	/*
+	for (int i = 0; i < bestRobots.size(); i++) {
+		cout << i << " : " << bestRobots[i] << endl;
+	}*/
 
-	if (RedScore > BlueScore) {
-		cout << "RED WON!!";
-	}
-	else
-	{
-		cout << "BLUE WON!!!";
-	}
+	sim.End("C:/Users/clywh/OneDrive/Desktop/Code/C/FRC2024GameSim/BaordGame/SaveFiles/SaveTest.txt");
 	
 	return 0;
 }
