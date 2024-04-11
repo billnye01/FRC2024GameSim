@@ -7,7 +7,9 @@ static class SimProgramProbertys
 {
 
 public:
-	SimProgramProbertys(Brain& brain, RobotContruller* robotCon);
+	SimProgramProbertys(Brain& brain, RobotContruller* robot);
+
+	void SimUpdate(Brain& brain, Robot* robot);
 
 };
 
